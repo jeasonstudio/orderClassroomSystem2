@@ -1,5 +1,6 @@
 <template>
 	<el-row id="app" type="flex" align="top">
+		<header-view></header-view>
 		Hello World
 		<router-view></router-view>
 		<footer>
@@ -11,10 +12,12 @@
 
 <script>
 	import footerView from './components/Footer.vue'
+	import headerView from './components/Header.vue'
 	export default {
 		name: 'app',
 		components: {
-			footerView
+			footerView,
+			headerView
 		}
 	}
 </script>
@@ -22,6 +25,7 @@
 <style lang="css">
 	html, body {
 		height: 100%;
+		margin: 0;
 	}
 
 	#app {
