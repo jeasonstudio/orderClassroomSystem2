@@ -1,23 +1,37 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
-  </div>
+	<el-row id="app" type="flex" align="top">
+		Hello World
+		<router-view></router-view>
+		<footer>
+			<footer-view></footer-view>
+		</footer>
+	</el-row>
+
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+	import footerView from './components/Footer.vue'
+	export default {
+		name: 'app',
+		components: {
+			footerView
+		}
+	}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="css">
+	html, body {
+		height: 100%;
+	}
+
+	#app {
+		font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-align: center;
+		color: #2c3e50;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+		height: 100%;
+	}
 </style>
