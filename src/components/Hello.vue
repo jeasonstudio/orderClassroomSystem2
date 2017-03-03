@@ -1,11 +1,19 @@
 <template>
-	<span>sss</span>
+	<el-button type="primary" :plain="true" @click="open2">成功</el-button>
 </template>
 
 <script>
 	export default {
-			data () {
+		data () {
 				return {
+			}
+		},
+		methods: {
+			open2() {
+				this.$message({
+					message: '恭喜你，这是一条成功消息',
+					type: 'success'
+				});
 			}
 		}
 	}
