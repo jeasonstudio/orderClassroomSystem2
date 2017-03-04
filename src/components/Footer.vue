@@ -13,6 +13,9 @@
 	.btFooter {
 		margin-bottom: 10px;
 	}
+	.crFooter {
+		font-size: 12px;
+	}
 	.crFooter a {
 		text-decoration: none;
 		color: #2c3e50;

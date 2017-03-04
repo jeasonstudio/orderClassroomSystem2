@@ -1,5 +1,5 @@
 <template>
-	<el-button type="primary" :plain="true" @click="open2">成功</el-button>
+	<mt-button type="primary" @click.native="open2">default</mt-button>
 </template>
 
 <script>
@@ -11,7 +11,7 @@
 		methods: {
 			open2() {
 				this.$message({
-					message: '恭喜你，这是一条成功消息',
+					message: '成功',
 					type: 'success'
 				});
 			}

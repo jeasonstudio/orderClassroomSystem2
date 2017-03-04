@@ -1,8 +1,21 @@
 <template>
 	<el-row id="app" type="flex" align="top">
-		<header-view></header-view>
-		Hello World
-		<router-view></router-view>
+		<mt-header class="apple-header" fixed title="ocs-机电楼教室预约"></mt-header>
+		<!-- Demo Navigation -->
+        <router-view></router-view>
+		
+		<section id="part1">
+
+		</section>
+		<section id="part2">
+
+		</section>
+		<section id="part3">
+
+		</section>
+		<section id="part4">
+
+		</section>
 		<footer>
 			<footer-view></footer-view>
 		</footer>
@@ -12,12 +25,12 @@
 
 <script>
 	import footerView from './components/Footer.vue'
-	import headerView from './components/Header.vue'
+	import { Header } from 'mint-ui';
+	
 	export default {
 		name: 'app',
 		components: {
-			footerView,
-			headerView
+			footerView
 		}
 	}
 </script>
@@ -37,5 +50,13 @@
 		flex-flow: column nowrap;
 		justify-content: space-between;
 		height: 100%;
+	}
+
+	.mint-header {
+		height: 50px!important;
+	}
+
+	.mint-header-title {
+		margin-top: 30px;
 	}
 </style>
