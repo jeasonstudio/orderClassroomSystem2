@@ -6,7 +6,7 @@ let util = {
 };
 
 const ajaxUrl = env === 'development' ?
-    'http://127.0.0.1:8888' :
+    'http://scce.kalen25115.cn' :
     env === 'production' ?
     'https://www.url.com' :
     'https://debug.url.com';

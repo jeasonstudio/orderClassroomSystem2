@@ -4,19 +4,25 @@
         <header>
             <Menu mode="horizontal" theme="primary" active-key="1">
                 <div class="logo">
-                    <Icon type="android-radio-button-on" size="22"></Icon>
-                    <span class="logo_text">教室预约</span>
+                    <Icon type="android-globe" size="22"></Icon>
+                    <!--<Icon type="android-radio-button-on" size="22"></Icon>-->
+                    <span class="logo_text" v-if="widthShow">机电楼教室预约系统</span>
+                    <span class="logo_text_blod" v-if="!widthShow">&nbsp;OCS</span>
                 </div>
-                <Menu-item key="1">
+                <Menu-item key="4" v-link="{path: '/user'}">
+                    <Icon type="person" size="22"></Icon>
+                    <span v-if="widthShow">个人中心</span>
+                </Menu-item>
+                <Menu-item key="3" v-link="{path: '/info'}">
                     <Icon type="ios-paper" size="22"></Icon>
                     <span v-if="widthShow">使用须知</span>
                 </Menu-item>
-                <Menu-item key="2">
-                    <Icon type="ios-people" size="22"></Icon>
+                <Menu-item key="2" v-link="{path: '/manage'}">
+                    <Icon type="ios-keypad" size="22"></Icon>
                     <span v-if="widthShow">查看往期</span>
                 </Menu-item>
-                <Menu-item key="4">
-                    <Icon type="settings" size="22"></Icon>
+                <Menu-item key="1" v-link="{path: '/index'}">
+                    <Icon type="plus-circled" size="22"></Icon>
                     <span v-if="widthShow">发起预约</span>
                 </Menu-item>
             </Menu>
@@ -32,6 +38,7 @@
 <script>
     import footerView from '../views/footer.vue'
     import '../styles/common.css'
+
     export default {
         data() {
             return {
@@ -39,7 +46,7 @@
             };
         }, ready() {
             let pageWidth = document.body.clientWidth
-            if (pageWidth <= 600) {
+            if (pageWidth <= 950) {
                 console.log(pageWidth)
                 this.widthShow = false
             }
@@ -95,6 +102,7 @@
     
     .ivu-menu-item {
         float: right!important;
+        padding: 0 4%!important;
     }
     
     .logo {
@@ -105,11 +113,15 @@
         font-size: 22px;
     }
 
+    .logo_text_blod {
+        font-weight: 900;
+    }
+
     .container {
         width: 100%;
         height: 100%;
         max-width: 1024px;
-        padding: 65px 10px 10px 10px;
+        padding: 70px 15px 15px 15px;
         background-color: #eee;
     }
 </style>
