@@ -9,10 +9,15 @@ import 'mint-ui/lib/style.css'
 import router from './router'
 import $ from 'jquery'
 
+import './assets/default.css'
+import './assets/demo3.css'
+import './assets/demo_styles.css'
+import './assets/main.css'
+import './assets/normalize.css'
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(MintUI)
-
 
 /* eslint-disable no-new */
 new Vue({

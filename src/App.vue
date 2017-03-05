@@ -27,6 +27,7 @@
 	import footerView from './components/Footer.vue'
 	import { Header } from 'mint-ui';
 	
+	
 	export default {
 		name: 'app',
 		components: {
@@ -53,10 +54,7 @@
 	}
 
 	.mint-header {
-		height: 50px!important;
+		box-shadow: 0 2px 3px hsla(0,0%,7%,.1), 0 0 0 1px hsla(0,0%,7%,.1);
 	}
 
-	.mint-header-title {
-		margin-top: 30px;
-	}
 </style>
