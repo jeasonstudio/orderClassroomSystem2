@@ -1,31 +1,33 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
-import router from './router'
-import $ from 'jquery'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import App from 'components/app.vue';
+import Routers from './router';
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
 
-import './assets/default.css'
-import './assets/demo3.css'
-import './assets/demo_styles.css'
-import './assets/main.css'
-import './assets/normalize.css'
+Vue.use(VueRouter);
+Vue.use(iView);
 
-Vue.config.productionTip = false
-Vue.use(ElementUI)
-Vue.use(MintUI)
+// 开启debug模式
+Vue.config.debug = true;
 
-/* eslint-disable no-new */
-new Vue({
-	el: '#app',
-	router,
-	// template: '<App/>',
-	// components: {
-	// 	App
-	// }
-	render: h => h(App)
-})
+// 路由配置
+let router = new VueRouter({
+    // 是否开启History模式的路由, 如果生产环境的服务端没有进行相关配置,请慎用
+    history: false
+});
+
+router.map(Routers);
+
+router.beforeEach(() => {
+    window.scrollTo(0, 0);
+});
+
+router.afterEach(() => {
+
+});
+
+router.redirect({
+    '*': '/index'
+});
+router.start(App, '#app');
