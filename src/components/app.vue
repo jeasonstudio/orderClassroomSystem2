@@ -6,7 +6,7 @@
                 <div class="logo">
                     <Icon type="android-globe" size="22"></Icon>
                     <!--<Icon type="android-radio-button-on" size="22"></Icon>-->
-                    <span class="logo_text" v-if="widthShow">机电楼教室预约系统</span>
+                    <span class="logo_text" v-if="widthShow">&nbsp;机电楼教室预约系统</span>
                     <span class="logo_text_blod" v-if="!widthShow">&nbsp;OCS</span>
                 </div>
                 <Menu-item key="4" v-link="{path: '/user'}">
@@ -47,7 +47,7 @@
         }, ready() {
             let pageWidth = document.body.clientWidth
             if (pageWidth <= 950) {
-                console.log(pageWidth)
+                // console.log(pageWidth)
                 this.widthShow = false
             }
         }, beforeDestroy() {

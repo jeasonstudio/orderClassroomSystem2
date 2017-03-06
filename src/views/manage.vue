@@ -10,16 +10,31 @@
         <p>事由说明： {{item.reason}}</p>
         <p>老师反馈： {{ item.feedback || '无'}}</p>
         <div class="buttonBox">
-            <i-button type="primary">查看二维码</i-button>
-            <i-button type="ghost" style="margin-left: 8px">取消预约</i-button>
+            <i-button type="primary" @click="showQRCode(item)">查看二维码</i-button>
+            <i-button type="ghost" @click="cancelOrder(item)" style="margin-left: 8px">取消预约</i-button>
         </div>
     </Card>
+    <Modal :visible.sync="qrcode" :closable="false" cancel-text="">
+        <div class="innerModal">
+            <p style="display:block;text-align:center;color:#999;font-size:12px;">截图或长按保存</p>
+            <img :src="modalItem.result_url" class="myQrcode" alt="qrcode">
+            <p style="margin-left: 30px;">教室：机电楼 {{modalItem.classroom.room_num}}</p>
+            <p style="margin-left: 30px;">时间： {{modalItem.date | formatDate}} &nbsp; {{ modalItem.time.time_info }}</p>
+        </div>
+    </Modal>
 </template>
 
 <script>
     export default {
         data() {
             return {
+                qrcode: false,
+                modalItem: {
+                    classroom: '',
+                    result_url: '',
+                    date: '',
+                    time: ''
+                },
                 manageOrders: [{
                     "id": "1366", "username": "41524120", "date_id": "0", "date": "2016-12-18", "time_id": "5", "classroom_id": "2", "status":
                     "1", "reason": "\u73ed\u4f1a", "commit_time": "1481765119", "handle_time": "1481767559", "feedback": "", "result_url": "http:\/\/scce.kalen25115.cn\/qrcode\/F80B67EA-6317-2F51-E7C8-B120AA312A43.png",
@@ -44,7 +59,14 @@
         }, ready() {
 
         }, beforeDestroy() { }, methods: {
-
+            showQRCode: function (tagObj) {
+                console.log(tagObj)
+                this.qrcode = true
+                this.modalItem = tagObj
+            },
+            cancelOrder: function (tagObj) {
+                console.log(tagObj)
+            }
         }, components: {
 
         },
@@ -58,13 +80,21 @@
 
 </script>
 
-<style>
+<style lang="sass">
     .useStatus {
         color: #fff;
         background-color: #FF0000;
     }
-
+    
     .buttonBox {
         margin: 10px 0;
+    }
+    
+    .myQrcode {
+        margin: 0;
+        width: 100%;
+        height: auto;
+        display: block;
+        text-align: center;
     }
 </style>

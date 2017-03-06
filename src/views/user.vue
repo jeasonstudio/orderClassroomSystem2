@@ -3,14 +3,18 @@
         <p slot="title">个人中心</p>
         <i-form v-ref:form-custom :model="formCustom" :rules="ruleCustom" :label-width="80">
             <Form-item label="学号：" prop="username">
-                <i-input type="text" :value.sync="formCustom.username"></i-input>
+                <i-input type="text" :value.sync="formCustom.username">
+                    <Icon type="ios-person-outline" slot="prepend"></Icon>
+                </i-input>
             </Form-item>
             <Form-item label="密码：" prop="password">
-                <i-input type="password" :value.sync="formCustom.password"></i-input>
+                <i-input type="password" :value.sync="formCustom.password">
+                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                </i-input>
             </Form-item>
             <Form-item>
-                <i-button type="primary" @click="handleSubmit('formCustom')">提交</i-button>
-                <i-button type="ghost" @click="handleReset('formCustom')" style="margin-left: 8px">重置</i-button>
+                <i-button type="primary" @click="handleSubmit('formCustom')">登录</i-button>
+                <i-button type="ghost" @click="handleReset('formCustom')" style="margin-left: 8px">清空</i-button>
             </Form-item>
         </i-form>
     </Card>

@@ -1,5 +1,5 @@
 <template>
-    <Card :bordered="false" style="height:100%">
+    <Card :bordered="false">
         <p slot="title">发起预约</p>
 
         <i-form :model="formItem" :label-width="60">
