@@ -4,9 +4,11 @@ import App from 'components/app.vue';
 import Routers from './router';
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
+import VueResource from 'vue-resource';
 
 Vue.use(VueRouter);
 Vue.use(iView);
+Vue.use(VueResource);
 
 // 开启debug模式
 Vue.config.debug = true;

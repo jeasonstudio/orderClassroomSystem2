@@ -61,6 +61,10 @@
         },
         methods: {
             handleSubmit(name) {
+                console.log(this)
+                this.$http.get('/api/a').then(function(r) {
+                    console.log(r)
+                })
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         this.$Message.success('提交成功!');

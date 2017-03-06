@@ -16,12 +16,14 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "vue-router": "^0.7.13",
+    "axios": "^0.15.3",
     "iview": "^1.0.0",
     "vue": "^1.0.26",
-    "axios": "^0.15.3"
+    "vue-resource": "^1.2.1",
+    "vue-router": "^0.7.13"
   },
   "devDependencies": {
+    "http-proxy-middleware": "^0.17.4",
     "autoprefixer-loader": "^2.0.0",
     "babel": "^6.3.13",
     "babel-core": "^6.3.21",

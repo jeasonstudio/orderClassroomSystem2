@@ -1,2 +1,4 @@
 src/router.js
 src/libs/util.js
+src/config/*.js
+webpack.*.js

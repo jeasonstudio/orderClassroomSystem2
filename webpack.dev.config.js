@@ -37,10 +37,18 @@ config.plugins = (config.plugins || []).concat([
     })
 ]);
 
+config.proxy = {
+    '/api/*': {
+        target: 'http://localhost',
+        changeOrigin: true,
+        secure: false
+    }
+}
+
 // 写入环境变量
-fs.open('./src/config/env.js', 'w', function(err, fd) {
+fs.open('./src/config/env.js', 'w', function (err, fd) {
     var buf = 'export default "development";';
-    fs.write(fd, buf, 0, buf.length, 0, function(err, written, buffer) {});
+    fs.write(fd, buf, 0, buf.length, 0, function (err, written, buffer) {});
 });
 
 module.exports = config;
