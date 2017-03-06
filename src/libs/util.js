@@ -6,14 +6,17 @@ let util = {
 };
 
 const ajaxUrl = env === 'development' ?
-    'http://scce.kalen25115.cn' :
+    'http://test-ocs.kalen.site' :
     env === 'production' ?
     'https://www.url.com' :
     'https://debug.url.com';
 
 util.ajax = axios.create({
     baseURL: ajaxUrl,
-    timeout: 30000
+    timeout: 30000,
+    headers: {
+        host: 'test-ocs.kalen.site'
+    }
 });
 
 export default util;

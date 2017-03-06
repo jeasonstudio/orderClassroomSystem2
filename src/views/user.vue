@@ -61,10 +61,11 @@
         },
         methods: {
             handleSubmit(name) {
-                console.log(this)
-                this.$http.get('/api/a').then(function(r) {
+                console.log(util)
+                util.ajax.get('/api.php/login?uname=41524120&passwd=41524120').then(function (r) {
                     console.log(r)
                 })
+
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         this.$Message.success('提交成功!');
@@ -74,6 +75,7 @@
                 })
             },
             handleReset(name) {
+                util.ajax.get('/api.php/user/get_info').then(function (r) { console.log(r) })
                 this.$refs[name].resetFields();
             }
         }

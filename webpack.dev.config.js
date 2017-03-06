@@ -24,6 +24,20 @@ config.vue = {
     }
 };
 
+config.devServer = {
+    proxy: {
+        '/api.php/*': {
+            target: 'http://test-ocs.kalen.site/api.php',
+            // ignorePath: true,
+            changeOrigin: true,
+            headers: {
+                host: 'test-ocs.kalen.site',
+                Referer: 'http://test-ocs.kalen.site/'
+            }
+        }
+    }
+}
+
 config.plugins = (config.plugins || []).concat([
     new ExtractTextPlugin("[name].css", {
         allChunks: true,
@@ -36,14 +50,6 @@ config.plugins = (config.plugins || []).concat([
         inject: false
     })
 ]);
-
-config.proxy = {
-    '/api/*': {
-        target: 'http://localhost',
-        changeOrigin: true,
-        secure: false
-    }
-}
 
 // 写入环境变量
 fs.open('./src/config/env.js', 'w', function (err, fd) {
