@@ -1,19 +1,16 @@
 <template>
     <Card :bordered="false">
         <p slot="title">个人中心</p>
-        <i-form v-ref:form-inline :model="formInline" :rules="ruleInline" inline>
-            <Form-item prop="user">
-                <i-input type="text" :value.sync="formInline.user" placeholder="学号">
-                    <Icon type="ios-person-outline" slot="prepend"></Icon>
-                </i-input>
+        <i-form v-ref:form-custom :model="formCustom" :rules="ruleCustom" :label-width="80">
+            <Form-item label="学号：" prop="username">
+                <i-input type="text" :value.sync="formCustom.username"></i-input>
             </Form-item>
-            <Form-item prop="password">
-                <i-input type="password" :value.sync="formInline.password" placeholder="密码：同学号">
-                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
-                </i-input>
+            <Form-item label="密码：" prop="password">
+                <i-input type="password" :value.sync="formCustom.password"></i-input>
             </Form-item>
             <Form-item>
-                <i-button type="primary" @click="handleSubmit('formInline')">登录</i-button>
+                <i-button type="primary" @click="handleSubmit('formCustom')">提交</i-button>
+                <i-button type="ghost" @click="handleReset('formCustom')" style="margin-left: 8px">重置</i-button>
             </Form-item>
         </i-form>
     </Card>
@@ -24,38 +21,42 @@
 
     export default {
         data() {
+            const validatePass = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请输入学号'));
+                } else {
+                    if (this.formCustom.password !== '') {
+                        // 对第二个密码框单独验证
+                        this.$refs.formCustom.validateField('password');
+                    }
+                    callback();
+                }
+            };
+            const validatePassCheck = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请输入密码'));
+                } else {
+                    callback();
+                }
+            };
+
             return {
-                formInline: {
-                    user: '',
+                formCustom: {
+                    username: '',
                     password: ''
                 },
-                ruleInline: {
-                    user: [
-                        { required: true, message: '请填写用户名', trigger: 'blur' }
+                ruleCustom: {
+                    username: [
+                        { validator: validatePass, trigger: 'blur' }
                     ],
                     password: [
-                        { required: true, message: '请填写密码', trigger: 'blur' },
-                        { type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur' }
+                        { validator: validatePassCheck, trigger: 'blur' }
                     ]
                 }
             }
-        }, ready() {
-
-        }, beforeDestroy() {
-
-        }, methods: {
+        },
+        methods: {
             handleSubmit(name) {
-                util.ajax.post('/api.php/login', {
-                    uname: 'Fred',
-                    passwd: 'Flintstone'
-                })
-                .then(function (response) {
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         this.$Message.success('提交成功!');
@@ -63,11 +64,12 @@
                         this.$Message.error('表单验证失败!');
                     }
                 })
+            },
+            handleReset(name) {
+                this.$refs[name].resetFields();
             }
-        }, components: {
-
         }
-    };
+    }
 
 </script>
 
@@ -83,7 +85,6 @@
     
     .ivu-form-item {
         display: block;
-        width: 80%;
         padding: 0 10%;
     }
 </style>

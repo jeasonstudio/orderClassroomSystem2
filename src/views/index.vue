@@ -40,6 +40,10 @@
     export default {
         data() {
             return {
+                formItem: {
+                    select: '',
+                    textarea: ''
+                }
             };
         }, ready() {
 
