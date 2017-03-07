@@ -2,7 +2,7 @@
     <div class="blue-header"></div>
     <div id="app">
         <header>
-            <Menu mode="horizontal" theme="primary" active-key="1">
+            <Menu mode="horizontal" theme="primary" :active-key.sync="akey">
                 <div class="logo">
                     <Icon type="android-globe" size="22"></Icon>
                     <!--<Icon type="android-radio-button-on" size="22"></Icon>-->
@@ -32,16 +32,15 @@
         <router-view></router-view>
     </div>
 
-    <!--<footer-view></footer-view>-->
 </template>
 
 <script>
-    import footerView from '../views/footer.vue'
     import '../styles/common.css'
 
     export default {
         data() {
             return {
+                akey: '1',
                 widthShow: true
             };
         }, ready() {
@@ -53,8 +52,8 @@
         }, beforeDestroy() {
 
         }, methods: {
-
-        }, components: { footerView }
+            
+        }, components: { }
     };
 
 </script>

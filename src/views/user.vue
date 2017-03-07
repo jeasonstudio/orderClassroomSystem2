@@ -13,7 +13,7 @@
                 </i-input>
             </Form-item>
             <Form-item>
-                <i-button type="primary" @click="handleSubmit('formCustom')">登录</i-button>
+                <i-button type="primary" :loading="loginLoad" @click="handleSubmit('formCustom')">登录</i-button>
                 <i-button type="ghost" @click="handleReset('formCustom')" style="margin-left: 8px">清空</i-button>
             </Form-item>
         </i-form>
@@ -45,6 +45,7 @@
             };
 
             return {
+                loginLoad: false,
                 formCustom: {
                     username: '',
                     password: ''
@@ -61,21 +62,21 @@
         },
         methods: {
             handleSubmit(name) {
+                let that = this
+                that.loginLoad = true
                 console.log(util)
-                util.ajax.get('/api.php/login?uname=41524120&passwd=41524120').then(function (r) {
-                    console.log(r)
-                })
-
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        this.$Message.success('提交成功!');
-                    } else {
-                        this.$Message.error('表单验证失败!');
-                    }
+                util.ajax.get('/api.php/login?uname=计通院办&passwd=A62332873').then(function (res) {
+                    console.log(res)
+                    that.$Message.success('提交成功!');
+                    that.loginLoad = false
+                }).catch(function (err) {
+                    // console.log(err)
+                    that.$Message.error('表单验证失败!');
+                    that.loginLoad = false
                 })
             },
             handleReset(name) {
-                util.ajax.get('/api.php/user/get_info').then(function (r) { console.log(r) })
+                util.ajax.get('/api.php/user/get_date').then(function (r) { console.log(r) })
                 this.$refs[name].resetFields();
             }
         }

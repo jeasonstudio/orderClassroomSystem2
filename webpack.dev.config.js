@@ -26,14 +26,9 @@ config.vue = {
 
 config.devServer = {
     proxy: {
-        '/api.php/*': {
+        'http://localhost:8080/api.php/*': {
             target: 'http://test-ocs.kalen.site/api.php',
-            // ignorePath: true,
-            changeOrigin: true,
-            headers: {
-                host: 'test-ocs.kalen.site',
-                Referer: 'http://test-ocs.kalen.site/'
-            }
+            changeOrigin: true
         }
     }
 }
