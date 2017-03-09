@@ -10,3 +10,10 @@ body {
     height: 100%;
     background-color: #eee!important;
 }
+
+/*ios input shadow*/
+input,
+textarea {
+    border: 0;
+    -webkit-appearance: none;
+}

@@ -1,6 +1,6 @@
 <template>
-    <div class="blue-header"></div>
     <div id="app">
+    <div class="blue-header"></div>
         <header>
             <Menu mode="horizontal" theme="primary" :active-key.sync="akey">
                 <div class="logo">
@@ -78,6 +78,7 @@
         text-align: center;
         position: fixed;
         top: 0;
+        z-index: 999;
     }
     
     #app a {
@@ -122,5 +123,6 @@
         max-width: 1024px;
         padding: 70px 15px 15px 15px;
         background-color: #eee;
+        z-index: 200;
     }
 </style>

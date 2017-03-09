@@ -4,12 +4,12 @@
         <i-form v-ref:form-custom :model="formCustom" :rules="ruleCustom" :label-width="80">
             <Form-item label="学号：" prop="username">
                 <i-input type="text" :value.sync="formCustom.username">
-                    <Icon type="ios-person-outline" slot="prepend"></Icon>
+                    <Icon type="ios-person-outline" slot="prepend" class="left-text"></Icon>
                 </i-input>
             </Form-item>
             <Form-item label="密码：" prop="password">
                 <i-input type="password" :value.sync="formCustom.password">
-                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                    <Icon type="ios-locked-outline" slot="prepend" class="left-text"></Icon>
                 </i-input>
             </Form-item>
             <Form-item>
@@ -65,16 +65,7 @@
                 let that = this
                 that.loginLoad = true
                 console.log(util)
-                this.$http.get('http://test-ocs.kalen.site/api.php/login?uname=计通院办&passwd=A62332873').then(function (res) {
-                    console.log(res)
-                    that.$Message.success('提交成功!');
-                    that.loginLoad = false
-                }).catch(function (err) {
-                    // console.log(err)
-                    that.$Message.error('表单验证失败!');
-                    that.loginLoad = false
-                })
-                // util.ajax.get('/api.php/login?uname=计通院办&passwd=A62332873').then(function (res) {
+                // this.$http.get('http://localhost:8080/api.php/login?uname=计通院办&passwd=A62332873').then(function (res) {
                 //     console.log(res)
                 //     that.$Message.success('提交成功!');
                 //     that.loginLoad = false
@@ -83,12 +74,27 @@
                 //     that.$Message.error('表单验证失败!');
                 //     that.loginLoad = false
                 // })
+                util.ajax.get('/api.php/login?uname=计通院办&passwd=A62332873').then(function (res) {
+                    console.log(res)
+                    that.$Message.success('提交成功!');
+                    that.loginLoad = false
+                }).catch(function (err) {
+                    // console.log(err)
+                    that.$Message.error('表单验证失败!');
+                    that.loginLoad = false
+                })
             },
             handleReset(name) {
-                this.$http.get('http://test-ocs.kalen.site/api.php/user/get_info').then(function (res) {
+                // this.$http.get('http://localhost:8080/api.php/user/get_info').then(function (res) {
+                //     console.log(res)
+                // }).catch(function (err) {
+                //     that.loginLoad = false
+                // })
+                util.ajax.get('/api.php/user/get_info').then(function (res) {
                     console.log(res)
+                    that.$Message.success('提交成功!');
                 }).catch(function (err) {
-                    that.loginLoad = false
+                    that.$Message.error('表单验证失败!');
                 })
                 this.$refs[name].resetFields();
             }

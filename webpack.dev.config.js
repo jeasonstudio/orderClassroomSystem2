@@ -24,11 +24,30 @@ config.vue = {
     }
 };
 
+config.devServer = {
+    proxy: {
+        '/api.php/*': {
+            target: 'http://test-ocs.kalen.site/api.php',
+            changeOrigin: true,
+            secure: false
+        }
+    },
+    host: '0.0.0.0',
+    port: 8080
+}
+
 // config.devServer = {
+//     historyApiFallback: true,
+//     hot: true,
+//     inline: true,
+//     progress: true,
+//     port: 3000,
+//     host: '10.0.0.9',
 //     proxy: {
-//         'http://localhost:8080/api.php/*': {
-//             target: 'http://test-ocs.kalen.site/api.php',
-//             changeOrigin: true
+//         '/test/*': {
+//             target: 'http://localhost',
+//             changeOrigin: true,
+//             secure: false
 //         }
 //     }
 // }
