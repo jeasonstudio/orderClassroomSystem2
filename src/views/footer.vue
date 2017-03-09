@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div>Copyright &copy; 2017</div>
-        <div>All By <a href="https://github.com/jeasonstudio" target="blank">Jeason</a>, <a href="https://github.com/kevinwang04" target="blank">Kevin Wang</a> & <a href="https://github.com/nladuo" target="blank">Kalen Blue</a> | 806 Lab</div>
+        <div>All By <a href="https://github.com/jeasonstudio" target="blank">Jeason</a>, <a href="https://github.com/kevinwang04" target="blank">Kevin</a> & <a href="https://github.com/nladuo" target="blank">Kalen</a> | 806 Lab</div>
     </footer>
 </template>
 <script>

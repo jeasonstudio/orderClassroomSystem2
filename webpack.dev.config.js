@@ -24,14 +24,14 @@ config.vue = {
     }
 };
 
-config.devServer = {
-    proxy: {
-        'http://localhost:8080/api.php/*': {
-            target: 'http://test-ocs.kalen.site/api.php',
-            changeOrigin: true
-        }
-    }
-}
+// config.devServer = {
+//     proxy: {
+//         'http://localhost:8080/api.php/*': {
+//             target: 'http://test-ocs.kalen.site/api.php',
+//             changeOrigin: true
+//         }
+//     }
+// }
 
 config.plugins = (config.plugins || []).concat([
     new ExtractTextPlugin("[name].css", {
