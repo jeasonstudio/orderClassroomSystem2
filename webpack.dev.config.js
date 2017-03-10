@@ -26,10 +26,13 @@ config.vue = {
 
 config.devServer = {
     proxy: {
-        '/api.php/*': {
-            target: 'http://test-ocs.kalen.site/api.php',
+        '/api.php': {
+            target: 'http://test-ocs.kalen.site',
             changeOrigin: true,
-            secure: false
+            secure: false,
+            pathRewrite: {
+                "^/api.php": ""
+            }
         }
     },
     host: '0.0.0.0',
