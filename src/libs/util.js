@@ -5,10 +5,10 @@ let util = {
 
 };
 
-const ajaxUrl = env === 'development' ? 'localhost:8080' : env === 'production' ? 'https://www.url.com' : 'https://debug.url.com';
+const ajaxUrl = env === 'development' ? null : env === 'production' ? 'https://www.url.com' : 'https://debug.url.com';
 
 if (env === 'development') {
-    axios.defaults.withCredentials = true
+    // axios.defaults.withCredentials = true
 }
 
 util.ajax = axios.create({
