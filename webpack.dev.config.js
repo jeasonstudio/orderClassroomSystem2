@@ -29,28 +29,34 @@ config.devServer = {
         '/api.php/**': {
             target: 'http://test-ocs.kalen.site',
             changeOrigin: true,
-            secure: false
+            secure: false,
+            hostRewrite: true,
+            autoRewrite: true,
+            cookieDomainRewrite: {
+                "http://localhost:8080/": "http://test-ocs.kalen.site/"
+            }
         }
     },
     host: '0.0.0.0',
     port: 8080
 }
 
-// config.devServer = {
-//     historyApiFallback: true,
-//     hot: true,
-//     inline: true,
-//     progress: true,
-//     port: 3000,
-//     host: '10.0.0.9',
-//     proxy: {
-//         '/test/*': {
-//             target: 'http://localhost',
-//             changeOrigin: true,
-//             secure: false
-//         }
-//     }
-// }
+config.onProxyRes = function (proxyRes, req, res) {
+    let existingCookies = proxyRes.headers['set-cookie'],
+        rewrittenCookies = [];
+
+    if (existingCookies !== undefined) {
+        if (!Array.isArray(existingCookies)) {
+            existingCookies = [existingCookies];
+        }
+
+        for (let i = 0; i < existingCookies.length; i++) {
+            rewrittenCookies.push(existingCookies[i].replace(/;\s*?(Secure)/i, ''));
+        }
+
+        proxyRes.headers['set-cookie'] = rewrittenCookies;
+    }
+}
 
 config.plugins = (config.plugins || []).concat([
     new ExtractTextPlugin("[name].css", {

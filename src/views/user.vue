@@ -67,11 +67,11 @@
                 console.log(util)
                 this.$http.get('/api.php/login?uname=计通院办&passwd=A62332873').then(function (res) {
                     console.log(res)
-                    that.$Message.success('提交成功!');
+                    that.$Message.success('提交成功!' + res.body.msg);
                     that.loginLoad = false
                 }).catch(function (err) {
                     // console.log(err)
-                    that.$Message.error('表单验证失败!');
+                    that.$Message.error('表单验证失败!' + res.body.msg);
                     that.loginLoad = false
                 })
                 // util.ajax.get('/api.php/login?uname=计通院办&passwd=A62332873').then(function (res) {
@@ -92,9 +92,9 @@
                 // })
                 util.ajax.get('/api.php/user/get_info').then(function (res) {
                     console.log(res)
-                    that.$Message.success('提交成功!');
+                    that.$Message.success('提交成功!' + res.body.msg);
                 }).catch(function (err) {
-                    that.$Message.error('表单验证失败!');
+                    that.$Message.error('表单验证失败!' + res.body.msg);
                 })
                 this.$refs[name].resetFields();
             }
