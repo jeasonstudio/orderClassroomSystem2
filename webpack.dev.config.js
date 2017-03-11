@@ -27,13 +27,13 @@ config.vue = {
 config.devServer = {
     proxy: {
         '/api.php/**': {
-            target: 'http://test-ocs.kalen.site',
+            target: 'http://scce.kalen25115.cn',
             changeOrigin: true,
             secure: false,
             hostRewrite: true,
             autoRewrite: true,
             cookieDomainRewrite: {
-                "http://localhost:8080/": "http://test-ocs.kalen.site/"
+                "http://localhost:8080/": "http://scce.kalen25115.cn/"
             }
         }
     },
