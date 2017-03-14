@@ -46,6 +46,7 @@
 
             return {
                 loginLoad: false,
+                LoginCookie: null,
                 formCustom: {
                     username: '',
                     password: ''
@@ -74,10 +75,15 @@
                 //     that.$Message.error('表单验证失败!' + res.body.msg);
                 //     that.loginLoad = false
                 // })
-                util.ajax.get('/api.php/login?uname=计通院办&passwd=A62332873').then(function (res) {
+                util.ajax.post('/api.php/login',{
+                    uname: '计通院办',
+                    passwd: 'A62332873'
+                }).then(function (res) {
                     console.log(res)
                     that.$Message.success('提交成功!');
                     that.loginLoad = false
+                    console.log(document.cookie)
+                    that.LoginCookie = document.cookie
                 }).catch(function (err) {
                     // console.log(err)
                     that.$Message.error('表单验证失败!');
@@ -85,12 +91,13 @@
                 })
             },
             handleReset(name) {
+                let that = this
                 // this.$http.jsonp('http://test-ocs.kalen.site/api.php/user/get_info').then(function (res) {
                 //     console.log(res)
                 // }).catch(function (err) {
                 //     // that.loginLoad = false
                 // })
-                util.ajax.get('/api.php/user/get_info').then(function (res) {
+                util.ajax.post('/api.php/user/get_info').then(function (res) {
                     console.log(res)
                     that.$Message.success('提交成功!' + res.body.msg);
                 }).catch(function (err) {
